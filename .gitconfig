@@ -5,7 +5,9 @@
 [alias]
 	l = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	rhh = reset --hard head
-	s = status --short
+	d = diff
+	s = status
+	ss = status --short -b
 	standup = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --since yesterday --author kgorski
 	thisweek = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --since 6days --author kgorski
 [color]

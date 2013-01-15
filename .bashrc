@@ -19,7 +19,9 @@ alias ll='ls -l'
 
 # git shorthand
 alias gl='git log'
-alias gs='git status'
+alias gs='git s'
+alias gd='git d'
+alias gss='git ss'
 alias ga='git add'
 alias gc='git commit'
 alias gp='git pull'
