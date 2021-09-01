@@ -1,0 +1,62 @@
+[branch]
+	# see ftp://www.kernel.org/pub/software/scm/git/docs/git-config.html
+	autosetupmerge = true # this means track remotes branches automatically
+	
+[push]
+	default = current
+	
+[credential]
+	helper = osxkeychain
+	
+[alias]
+	# some borrowed from https://github.com/paulirish/dotfiles/blob/master/.gitconfig
+	l = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	rhh = reset --hard head
+	st = status -sb
+	s = status
+	ss = status --short -b
+	aa = add --all
+	cb = checkout -b 
+	p = pull
+	co = checkout
+	cm = checkout master
+	com = commit -m  
+	d = diff --color --color-words --abbrev
+	bl = branch -alv 
+	
+[core]
+	excludesfile = ~/.gitignore_global
+	# insanely beautiful diffs
+	#pager = diff-highlight | diff-so-fancy | less --tabs=4 -RFX
+	
+[color]
+	ui = always
+
+[color "diff"]
+	meta = yellow bold
+	commit = green bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = "red bold 52"
+	newNormal = "green bold"
+	newHighlight = "green bold 22"
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+	
+[user]
+	name = nerickson
+	email = nerickson@homeaway.com
+	

@@ -3,7 +3,7 @@
 # ------------------ SSH nonsense -----------------
 
 # start up ssh-agent, unless running on a mac (Darwin uname)
-if [ ! "$(uname)" == "Darwin" ]; then
+#if [ ! "$(uname)" == "Darwin" ]; then
 
 echo "Initializing ssh-agent..."
 SSH_ENV="$HOME/.ssh/environment"
@@ -16,9 +16,9 @@ chmod 600 "$SSH_ENV"
 ssh-add
 
 echo "ssh-agent setup complete."
-else
-echo "Skipping ssh-agent for OSX..."
-fi
+#else
+#echo "Skipping ssh-agent for OSX..."
+#fi
 
 #-------------- colorizing setup ---------------
 
