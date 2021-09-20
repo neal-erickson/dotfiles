@@ -108,9 +108,15 @@ source $ZSH/oh-my-zsh.sh
 # [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # ---------------------------------------------------------------------
+# Source aliases
+# ---------------------------------------------------------------------
+echo "Sourcing aliases..."
+source ${0:a:h}/../common/aliases.sh
+
+# ---------------------------------------------------------------------
 # Work specific junk
 # ---------------------------------------------------------------------
-echo "Configuring HomeAway-specific environment..."
+echo "Setting up work-specific environment..."
 
 # maven
 export MAVEN_HOME=/usr/local/Cellar/maven/3.6.1
@@ -151,4 +157,4 @@ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 # jest debug printing when assertions fail...
 export DEBUG_PRINT_LIMIT=20000
 
-echo "Profile initialisation complete."
+echo "Profile initialisation complete!"
