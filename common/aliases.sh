@@ -34,6 +34,9 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 
+# Restart shell
+alias restart='exec "$SHELL"'
+
 # -----------------------------------------------------------------------------
 # Git aliases - some borrowed from https://github.com/paulirish/dotfiles/blob/master/.gitconfig
 # -----------------------------------------------------------------------------

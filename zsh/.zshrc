@@ -157,4 +157,9 @@ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 # jest debug printing when assertions fail...
 export DEBUG_PRINT_LIMIT=20000
 
-echo "Profile initialisation complete!"
+# pyenv usage: https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+
+echo "\nProfile initialisation complete!"
