@@ -22,7 +22,7 @@
 	cm = checkout master
 	com = commit -m  
 	d = diff --color --color-words --abbrev
-	bl = branch -alv 
+	bl = branch -alv
 	
 [core]
 	excludesfile = ~/.gitignore_global
