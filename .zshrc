@@ -111,48 +111,13 @@ source $ZSH/oh-my-zsh.sh
 # Source aliases
 # ---------------------------------------------------------------------
 echo "Sourcing aliases..."
-source ${0:a:h}/../common/aliases.sh
+source ${0:a:h}/../.dotfiles-common/aliases.sh
 
-# ---------------------------------------------------------------------
-# Work specific junk
-# ---------------------------------------------------------------------
-echo "Setting up work-specific environment..."
-
-# maven
-export MAVEN_HOME=/usr/local/Cellar/maven/3.6.1
-export PATH=$MAVEN_HOME/bin:$PATH;
-
-# java
-export JAVA_HOME=`/usr/libexec/java_home -v1.8`
-export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-alias java11='export JAVA_HOME=$JAVA_11_HOME'
-export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
-alias java8='export JAVA_HOME=$JAVA_8_HOME'
-export JAVA_HOME=`/usr/libexec/java_home -v1.8` # default to 8 for now
-
-# confluent for kafka-kommander
-export CONFLUENT_HOME=~/tools/confluent-5.2.2/
-export LOG_DIR=/var/log/kafka
-
-# C*
-export CASSANDRA_HOME=/usr/local/opt/cassandra
-export CASSANDRA=$CASSANDRA_HOME/bin
-export PATH=$PATH:$CASSANDRA;
-
-# Go
-export GOPATH=~/dev/go
-export PATH=$PATH:$(go env GOPATH)/bin
-
-# aws_key_gen
-export PATH=~/dev/etc/aws_key_gen_0.11.2_darwin_amd64:$PATH
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# mysql client
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
 # jest debug printing when assertions fail...
 export DEBUG_PRINT_LIMIT=20000
@@ -162,4 +127,4 @@ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 
-echo "\nProfile initialisation complete!"
+echo "\nProfile initialization complete."
