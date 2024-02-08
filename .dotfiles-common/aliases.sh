@@ -37,6 +37,12 @@ alias localip="ipconfig getifaddr en0"
 # Restart shell
 alias restart='exec "$SHELL"'
 
+# Handy history function
+alias hpg='history | grep '
+
+# Alias for my bare git repo setup
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles-repo --work-tree=$HOME'
+
 # -----------------------------------------------------------------------------
 # Git aliases - some borrowed from https://github.com/paulirish/dotfiles/blob/master/.gitconfig
 # -----------------------------------------------------------------------------
@@ -52,8 +58,8 @@ alias gco='git checkout'
 alias gcm='git checkout master'
 alias gcom='git commit -m '
 alias gd='git diff --color --color-words --abbrev' # nice diff
-alias gbl='git branch -alv' # list branches
+alias gbl='git branch -alv --sort=-committerdate' # list branches, sorted by last commit date
 alias gr='git remote -v'
 
-echo " done."
+echo "...done."
 
