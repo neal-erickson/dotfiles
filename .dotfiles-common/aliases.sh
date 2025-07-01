@@ -7,6 +7,9 @@ alias ls="ls -aFG"
 # list long format
 alias ll="ls -alFG"
 
+# list by time, reverse
+alias lt="ls -alFGrt"
+
 # List only directories
 alias lsd="ls -lFG | grep --color=never '^d'"
 
