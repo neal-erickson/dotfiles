@@ -7,6 +7,9 @@ alias ls="ls -aFG"
 # list long format
 alias ll="ls -alFG"
 
+# list by time, reverse
+alias lt="ls -alFGrt"
+
 # List only directories
 alias lsd="ls -lFG | grep --color=never '^d'"
 
@@ -14,7 +17,7 @@ alias lsd="ls -lFG | grep --color=never '^d'"
 alias sudo='sudo '
 
 # Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias afk="open -a ScreenSaverEngine"
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
@@ -37,6 +40,15 @@ alias localip="ipconfig getifaddr en0"
 # Restart shell
 alias restart='exec "$SHELL"'
 
+# Handy history function
+alias hpg='history | grep '
+
+# Alias for my bare git repo setup
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles-repo --work-tree=$HOME'
+
+# Handy jq formatting for whatever's in current clipboard
+alias jqf="pbpaste | jq '.' | pbcopy "
+
 # -----------------------------------------------------------------------------
 # Git aliases - some borrowed from https://github.com/paulirish/dotfiles/blob/master/.gitconfig
 # -----------------------------------------------------------------------------
@@ -51,9 +63,14 @@ alias gp='git pull'
 alias gco='git checkout'
 alias gcm='git checkout master'
 alias gcom='git commit -m '
-alias gd='git diff --color --color-words --abbrev' # nice diff
-alias gbl='git branch -alv' # list branches
-alias gr='git remote -v'
+#alias gd='git diff --color --color-words --abbrev' # nice diff
+alias gd='git diff --color' # diff-so-fancy plugin must be installed in zsh
+alias gbl='git branch -alv --sort=-committerdate' # list branches, sorted by last commit date
+alias gr='git remote -v' # list remotes easily with verbosity
 
-echo " done."
+# New ones
+alias gpatch='git --no-pager diff --no-color' # allows 'gpatch > patch1.txt' usage with diff-so-fancy
+alias gai='git add -i' # EZ interactive mode
+
+echo "...done."
 
