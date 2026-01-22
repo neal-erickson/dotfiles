@@ -1,4 +1,3 @@
-# If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -8,7 +7,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="aussiegeek"
+ZSH_THEME="blinks"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,7 +69,7 @@ ZSH_THEME="aussiegeek"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ssh-agent autojump)
+plugins=(ssh-agent autojump diff-so-fancy vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,11 +102,23 @@ source $ZSH/oh-my-zsh.sh
 # --------------------------------------------------------------------------------------------------------------
 # ------- END ORIGINAL .ZSHRC FILE !!!!! -----------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------
-:
+
+echo "Applying zshrc customizations..."
+
 # ---------------------------------------------------------------------
-# PATH
+# Optional extension file
 # ---------------------------------------------------------------------
 
+EXT_FILE=.zshrc_extension
+if [ -f $EXT_FILE ]
+then
+	echo "Sourcing extension at $EXT_FILE"
+	source $EXT_FILE
+else
+	echo "No extension found at $EXT_FILE"
+fi
+
+# Setup homebrew PATH
 export PATH="/opt/homebrew/bin:$PATH"    
 
 # ---------------------------------------------------------------------
@@ -130,8 +141,40 @@ eval "$(pyenv virtualenv-init -)"
 # Source my common aliases
 # ---------------------------------------------------------------------
 
-echo "Sourcing aliases..."
 source ${0:a:h}/.dotfiles-common/aliases.sh
+
+# ---------------------------------------------------------------------
+# Prompt building
+# ---------------------------------------------------------------------
+
+setopt prompt_subst # Allow zsh prompt substitution and expansion
+# git prompt stuff
+# https://zsh.sourceforge.io/Doc/Release/User-Contributions.html#Version-Control-Information
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+VCS_INFO_FORMAT=' on %F{5}[%F{093}%b%F{5}]%f'
+zstyle ':vcs_info:*' actionformats \
+    '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+#zstyle ':vcs_info:*' formats       \
+#    ' on %F{5}[%F{093}%b%F{5}]%f'
+zstyle ':vcs_info:*' formats $VCS_INFO_FORMAT
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+
+# ---------------------------------------------------------------------
+# PATH
+# ---------------------------------------------------------------------
+
+# Homebrew links
+export PATH="/opt/homebrew/bin:$PATH"    
+# Libpq (psql) needs a little extra love
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# ---------------------------------------------------------------------
+# Autojump
+# ---------------------------------------------------------------------
+
+# From autojump post install doco:
+# [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # ---------------------------------------------------------------------
 # Prompt building
@@ -235,6 +278,9 @@ export LESS_TERMCAP_md="${orange}";
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# For oh-my-zsh plugin "vi-mode":
+export INSERT_MODE_INDICATOR="%F{yellow}+%f"
+
 # NVM stuff
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -242,6 +288,12 @@ export NVM_DIR="$HOME/.nvm"
 
 # jest debug printing when assertions fail...
 export DEBUG_PRINT_LIMIT=20000
+
+# LLVM 14 needs this to be set for cargo to work
+#export PATH="/opt/homebrew/opt/llvm@14/bin:$PATH"
+
+# Make binaries installed via `go install` executable on the path
+export PATH="$HOME/go/bin:$PATH"
 
 # ---------------------------------------------------------------------
 # Pyenv
@@ -265,3 +317,6 @@ export DEBUG_PRINT_LIMIT=20000
 #eval "$(pyenv init -)"
 
 # EOF
+
+# Created by `pipx` on 2025-08-20 17:21:23
+export PATH="$PATH:/Users/neal.erickson/.local/bin"
