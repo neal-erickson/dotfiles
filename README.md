@@ -9,6 +9,7 @@ Installing using bare repo:
 4. Set local configuration in .dotfiles-repo: `dotfiles config --local status.showUntrackedFiles no`
 5. Checkout latest code: `dotfiles checkout`
 6. Add alias in step 3 to your shell profile, e.g. .zshrc
+7. If files are marked as deleted from `dotfiles status` run `dotfiles restore .`
 
 References:
 - https://www.atlassian.com/git/tutorials/dotfiles
